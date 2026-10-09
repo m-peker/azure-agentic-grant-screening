@@ -1,0 +1,36 @@
+# Pinned on 2026-10-01. Python 3.11.
+# Pipeline (local). The officer web app has its own list: webapp/requirements.txt
+
+# Azure SDKs
+azure-identity==1.26.0
+azure-ai-projects==2.6.1
+azure-ai-documentintelligence==1.0.2
+azure-ai-textanalytics==5.4.0
+azure-ai-contentsafety==1.0.0
+azure-search-documents==12.0.0
+azure-storage-blob==12.31.0
+azure-cosmos==4.17.1
+azure-monitor-opentelemetry==1.8.10
+openai==3.22.1
+
+# Agent orchestration
+agent-framework==1.19.0
+
+# Local document handling
+pdfplumber==0.11.10
+pypdf==6.19.0
+reportlab==5.0.1
+
+# Officer UI (local run)
+fastapi==0.141.1
+uvicorn==0.54.0
+python-multipart==0.0.32
+jinja2==3.1.6
+
+# Utilities
+pydantic==2.13.5
+PyYAML==6.0.3
+python-dotenv==1.2.4
+pytest==9.1.1
+httpx==0.28.1
+requests==2.34.2

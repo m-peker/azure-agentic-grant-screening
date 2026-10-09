@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% block title %}{{ r.title or r.application_id }}{% endblock %}
+{% block content %}
+{% set d = r.decision %}
+{% set f = r.facts or {} %}
+
+{% if saved %}<div class="toast ok" role="status">Kararınız kaydedildi{{ '.' if r.status == 'DONE' else '; birazdan uygulanacak.' }}</div>{% endif %}
+{% if error == 'note' %}<div class="toast bad" role="alert">Önerilenden farklı bir karar verdiğiniz için lütfen gerekçenizi yazın.</div>{% endif %}
+
+<div class="page-head">
+  <div>
+    <a href="/" class="back">← Başvurular</a>
+    <h1>{{ r.title or r.application_id }}</h1>
+    <p><span class="chip">{{ r.application_id }}</span>
+      {% if r.document_number and r.document_number != r.application_id %}<span class="chip" title="Başvuru formunda yazan numara">Formdaki no: {{ r.document_number }}</span>{% endif %} <span class="pill {{ status_kind(r.status) }}">{{ status_label(r.status) }}</span></p>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="stack">
+    <section class="banner {{ decision_kind(d.decision) }}">
+      <div class="icon" aria-hidden="true">{{ decision_icon(d.decision) }}</div>
+      <div>
+        <div class="eyebrow">Ön değerlendirme</div>
+        <div class="title">{{ decision_label(d.decision) }}</div>
+        <div class="text">{{ decision_text(d.decision) }}</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Tespitler</h2>
+      {% if findings %}
+      <ol class="findings">
+        {% for item in findings %}<li class="{{ item.kind }}">{{ item.text }}
+          {% for q in item.quotes or [] %}<blockquote class="evidence hidden-text"><span class="src">{{ q.label }}</span>“{{ q.text }}”</blockquote>{% endfor %}
+        </li>{% endfor %}
+      </ol>
+      {% else %}
+      <p class="muted" style="margin:0">Ön uygunluk koşullarının tamamı karşılanıyor.</p>
+      {% endif %}
+    </section>
+
+    <section class="facts">
+      <div class="fact"><div class="k">Toplam bütçe</div>
+        <div class="v {{ 'alert' if f.rows_sum and f.declared_total and f.rows_sum != f.declared_total else '' }}">{{ tl(f.rows_sum) }}</div>
+        {% if f.rows_sum and f.declared_total and f.rows_sum != f.declared_total %}<div class="s">Beyan edilen: {{ tl(f.declared_total) }}</div>{% endif %}</div>
+      <div class="fact"><div class="k">Proje süresi</div><div class="v">{{ (f.duration_months ~ ' ay') if f.duration_months else '—' }}</div></div>
+      <div class="fact"><div class="k">Doktora tarihi</div><div class="v">{{ date_tr(f.phd_date) }}</div>
+        {% if f.leaves %}<div class="s">{{ f.leaves }} izin beyanı</div>{% endif %}</div>
+      <div class="fact"><div class="k">Kontroller</div><div class="v">{{ passed }}/{{ checks | length }} uygun</div>
+        {% if skipped %}<div class="s">{{ skipped | length }} kontrol değerlendirilmedi</div>{% endif %}</div>
+    </section>
+
+    <section class="card" data-tabs>
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-tab="document">Başvuru belgesi</button>
+        <button role="tab" aria-selected="false" data-tab="checks">Kontroller</button>
+        {% if r.findings %}<button role="tab" aria-selected="false" data-tab="evidence">Kanıtlar</button>{% endif %}
+        <button role="tab" aria-selected="false" data-tab="letter">Eksiklik yazısı</button>
+      </div>
+
+      <div class="panel" data-panel="document">
+        <div class="doc-bar">
+          <span class="muted">{{ r.application_id }}.pdf{% if (r.document or {}).pages %} · {{ r.document.pages }} sayfa{% endif %}</span>
+          <span class="doc-actions"><a href="/a/{{ r.application_id }}/document" target="_blank" rel="noopener">Yeni sekmede aç ↗</a>
+            <a href="/a/{{ r.application_id }}/document?download=1">İndir</a></span>
+        </div>
+        <div class="pdf-pages" id="pdf-viewer" data-src="/a/{{ r.application_id }}/document" aria-label="Başvuru belgesi {{ r.application_id }}">
+          <div class="pdf-status">Belge yükleniyor…</div>
+        </div>
+        {% if r.integrity and r.integrity.flag %}<p class="note">Not: Belgedeki gizli metin görüntüleyicide görünmez; içeriği yukarıdaki Tespitler bölümünde alıntılanmıştır.</p>{% endif %}
+      </div>
+
+      <div class="panel" data-panel="checks" hidden>
+        <ul class="checks">
+          {% for x in checks %}
+          <li>
+            <span class="pill {{ rule_kind(x.status) }}">{{ rule_label(x.status) }}</span>
+            <div><div class="check-title">{{ x.title or x.rule_id }}</div><div class="check-sub">{{ x.summary }}</div></div>
+          </li>
+          {% endfor %}
+          {% if skipped %}
+          <li class="dim"><span class="pill muted">Değerlendirilmedi</span>
+            <div><div class="check-title">{{ skipped | length }} kontrol</div><div class="check-sub">Yürütücü uygunluğu sağlanmadığı için diğer koşullar değerlendirilmedi.</div></div></li>
+          {% endif %}
+        </ul>
+      </div>
+
+      {% if r.findings %}
+      <div class="panel" data-panel="evidence" hidden>
+        {% for fd in r.findings %}
+        <article class="finding">
+          <p>{{ fd.rationale }}</p>
+          {% for ev in fd.evidence %}
+          <blockquote class="evidence"><span class="src">{{ 'Başvuru' if ev.source == 'application' else ('Sistem araması' if ev.source.startswith('tool:') else 'Çağrı belgesi') }}</span>{{ ev.quote }}</blockquote>
+          {% endfor %}
+        </article>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div class="panel" data-panel="letter" hidden>
+        {% if r.letter and r.letter.text %}
+        <div class="paper">{{ r.letter.text }}</div>
+        <p class="note">Taslak onaylı şablon cümlelerinden oluşturulmuştur. Kararınızla birlikte başvuru sahibine iletilir.</p>
+        {% elif r.letter and r.letter.mode == 'withheld' %}<p class="muted" style="margin:0">Belgede bütünlük sorunu bulunduğu için başvurana eksiklik yazısı hazırlanmadı. Başvuru Çağrı Metni madde 7.1 kapsamında uzman tarafından ele alınır.</p>
+        {% elif d.decision == 'OFFICER_REVIEW' %}<p class="muted" style="margin:0">Başvurana iletilecek bir eksiklik bulunmadı. Uzman kontrolü gereken maddeler Tespitler bölümündedir; bunlar yazıya girmez.</p>
+        {% else %}<p class="muted" style="margin:0">Eksiklik bulunmadığı için yazı hazırlanmadı.</p>{% endif %}
+      </div>
+    </section>
+  </div>
+
+  <aside class="aside">
+    {% if r.status == 'PENDING_REVIEW' %}
+    <form class="card" method="post" action="/a/{{ r.application_id }}/decision" id="decision-form" data-suggested="{{ suggested }}">
+      <h2>Kararınız</h2>
+      <div class="choices">
+        {% for key, label, hint in finals %}
+        <label class="choice"><input type="radio" name="final_decision" value="{{ key }}" {{ 'checked' if key == suggested else '' }} required>
+          <span><b>{{ label }}{% if key == suggested %} <em class="tag">Önerilen</em>{% endif %}</b><small>{{ hint }}</small></span></label>
+        {% endfor %}
+      </div>
+      <label class="field" for="note">Gerekçe <span class="optional" id="note-optional">(isteğe bağlı)</span></label>
+      <textarea id="note" name="note" placeholder="Kararınızın gerekçesi kayda geçer."></textarea>
+      <button class="btn block" type="submit">Kararı kaydet</button>
+    </form>
+    {% elif r.status == 'DECISION_SUBMITTED' %}
+    <div class="card"><h2>Kararınız alındı</h2><p class="muted" style="margin:0">Karar sisteme uygulanıyor. Bu sayfayı birazdan yenileyin.</p></div>
+    {% elif r.officer %}
+    <div class="card">
+      <h2>Karar</h2>
+      <p class="decided">{{ final_label(r.officer.final_decision) }}</p>
+      <p class="muted" style="margin:0">{{ r.officer.officer }} · {{ when(r.updated_at) }}</p>
+      {% if r.officer.note %}<blockquote class="evidence">{{ r.officer.note }}</blockquote>{% endif %}
+    </div>
+    {% endif %}
+  </aside>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/vendor/pdfjs/pdf.min.js"></script>
+{% endblock %}

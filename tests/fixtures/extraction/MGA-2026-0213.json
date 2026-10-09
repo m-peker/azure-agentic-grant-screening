@@ -1,0 +1,58 @@
+{
+ "phd_date": {
+  "paragraph_id": "P17",
+  "quote": "Doktora derecesi alış tarihi: 20.06.2017"
+ },
+ "duration": {
+  "paragraph_id": "P20",
+  "quote": "Proje süresi: 24 ay"
+ },
+ "declared_total": {
+  "paragraph_id": "P14",
+  "quote": "Beyan edilen toplam bütçe: 1.200.000 TL"
+ },
+ "leaves": [
+  {
+   "leave_type": "parental",
+   "evidence": {
+    "paragraph_id": "P18",
+    "quote": "Doğum / ebeveyn izni: 2 adet (03.2019-09.2019; 01.2022-07.2022), belgeler ektedir"
+   }
+  },
+  {
+   "leave_type": "parental",
+   "evidence": {
+    "paragraph_id": "P18",
+    "quote": "Doğum / ebeveyn izni: 2 adet (03.2019-09.2019; 01.2022-07.2022), belgeler ektedir"
+   }
+  }
+ ],
+ "leave_documents": {
+  "paragraph_id": "P18",
+  "quote": "belgeler ektedir"
+ },
+ "exception_claims": [
+  {
+   "kind": "call_reference",
+   "cited_id": "Duyuru-2",
+   "summary": "Ekipman payının Duyuru-2 kapsamında alınan ön onaya dayandığı iddia ediliyor.",
+   "evidence": {
+    "paragraph_id": "P16",
+    "quote": "Ekipman payı Duyuru-2 kapsamında alınan ön onaya dayanmaktadır (Ön Onay No: ON-2026-012)."
+   }
+  },
+  {
+   "kind": "preapproval",
+   "cited_id": "ON-2026-012",
+   "summary": "Ekipman payı için Ön Onay No: ON-2026-012 verildiği iddia ediliyor.",
+   "evidence": {
+    "paragraph_id": "P16",
+    "quote": "Ekipman payı Duyuru-2 kapsamında alınan ön onaya dayanmaktadır (Ön Onay No: ON-2026-012)."
+   }
+  }
+ ],
+ "attachments": {
+  "paragraph_id": "P21",
+  "quote": "Ekler: Özgeçmiş, izin belgeleri, Ek-B genotipleme fiyat teklifi"
+ }
+}

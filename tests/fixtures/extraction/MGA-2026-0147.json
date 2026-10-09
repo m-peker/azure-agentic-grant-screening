@@ -1,0 +1,49 @@
+{
+ "phd_date": {
+  "paragraph_id": "P18",
+  "quote": "Doktora derecesi alış tarihi: 11.02.2021"
+ },
+ "duration": {
+  "paragraph_id": "P19",
+  "quote": "Proje süresi: 18 ay"
+ },
+ "declared_total": {
+  "paragraph_id": "P14",
+  "quote": "Beyan edilen toplam bütçe: 1.449.000 TL"
+ },
+ "leaves": [],
+ "leave_documents": null,
+ "exception_claims": [
+  {
+   "kind": "call_reference",
+   "cited_id": "4.3",
+   "summary": "Dolaylı giderin çağrı metninin 4.3 maddesine göre hesaplandığı iddia ediliyor.",
+   "evidence": {
+    "paragraph_id": "P16",
+    "quote": "çağrı metninin 4.3 maddesi uyarınca"
+   }
+  },
+  {
+   "kind": "preapproval",
+   "cited_id": "ON-2025-031",
+   "summary": "Ekipman payı için ön onay alındığı iddia ediliyor.",
+   "evidence": {
+    "paragraph_id": "P16",
+    "quote": "Ön Onay No: ON-2025-031"
+   }
+  },
+  {
+   "kind": "call_reference",
+   "cited_id": "Duyuru-2",
+   "summary": "Ekipman payı için Duyuru-2 kapsamında işlem yapıldığı iddia ediliyor.",
+   "evidence": {
+    "paragraph_id": "P16",
+    "quote": "Duyuru-2 kapsamında"
+   }
+  }
+ ],
+ "attachments": {
+  "paragraph_id": "P20",
+  "quote": "Ekler: Özgeçmiş"
+ }
+}

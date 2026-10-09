@@ -1,0 +1,15 @@
+<article class="card proposal {{ 'highlight' if uploaded == p.id else '' }}">
+  <div class="top"><span class="chip">{{ p.id }}</span>
+    {% if p.status %}<span class="pill {{ status_kind(p.status) }}">{{ status_label(p.status) }}</span>
+    {% elif p.submission_status in submission_status %}<span class="pill {{ submission_status[p.submission_status][1] }}">{{ submission_status[p.submission_status][0] }}</span>
+    {% else %}<span class="pill info">Yeni</span>{% endif %}</div>
+  <h3>{{ p.title }}</h3>
+  {% if p.summary %}<p>{{ p.summary }}</p>{% endif %}
+  <div class="actions">
+    {% if local_mode %}
+      <button class="btn {{ 'ghost' if p.status else '' }}" data-run="{{ p.id }}">{{ 'Yeniden incele' if p.status else 'İncelemeyi başlat' }}</button>
+    {% endif %}
+    {% if p.status %}<a class="btn" href="/a/{{ p.id }}">Sonucu aç</a>{% endif %}
+    {% if p.date %}<span class="faint date">{{ date_tr(p.date[:10]) }}</span>{% endif %}
+  </div>
+</article>

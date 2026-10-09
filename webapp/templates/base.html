@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Başvurular{% endblock %} · Hibe Ön Uygunluk</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233b5bdb'/%3E%3Cpath d='M9 16.5l4.5 4.5L23 11.5' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="in">
+      <a class="brand" href="/"><span class="mark">✓</span><span>Hibe Ön Uygunluk</span></a>
+      <nav class="nav" aria-label="Ana menü">
+        <a href="/" class="{{ 'active' if active == 'panel' else '' }}">Başvurular</a>
+        {% if local_mode %}<a href="/inbox" class="{{ 'active' if active == 'inbox' else '' }}">Gelen başvurular</a>{% endif %}
+      </nav>
+      <div class="user"><span class="name">{{ officer }}</span><span class="avatar" aria-hidden="true">{{ officer[:1] | upper }}</span></div>
+    </div>
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+  <footer class="foot">Örnek Bilim Vakfı · Genç Araştırmacı Hibe Programı 2026</footer>
+  {% block scripts %}{% endblock %}
+  <script src="/static/app.js"></script>
+</body>
+</html>

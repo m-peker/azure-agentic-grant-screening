@@ -1,0 +1,142 @@
+rulebook_id: mga_eligibility
+version: 2
+call_id: MGA-2026
+effective_from: 2026-07-15
+effective_to: null
+source_ref: {doc_id: MGA-2026-CALL, version: 2}
+application_deadline: 2026-09-30
+
+# check_type:
+#   date      -> code computes date arithmetic (stage C)
+#   numeric   -> code compares a value read from the extracted / table data (stage C)
+#   computed  -> code derives the value from the budget table, never the LLM (stage C)
+#   presence  -> code checks that required sections exist (stage C)
+# gate: true -> failing this rule ends the pipeline early (no further LLM calls)
+rules:
+  - id: R-ELG-01
+    title: "Yürütücü uygunluğu (doktora sonrası 7 yıl)"
+    display_unit: date
+    check_type: date
+    description: "PhD date within 7 years of deadline, extended by documented leaves"
+    base_limit_months: 84
+    extensions:
+      - {leave_type: parental, add_months: 18}
+      - {leave_type: long_term_sick, add_months: leave_duration}
+    severity: HIGH
+    gate: true
+    source: {doc_id: MGA-2026-CALL, version: 2, section: "2.1-2.2"}
+    template: TPL-INELIGIBLE
+
+  - id: R-DUR-01
+    title: "Proje süresi"
+    display_unit: months
+    check_type: numeric
+    checks:
+      - {field: duration_months, operator: ">=", limit: 12}
+      - {field: duration_months, operator: "<=", limit: 24}
+    severity: HIGH
+    gate: false
+    source: {doc_id: MGA-2026-CALL, version: 2, section: "3.1"}
+    template: TPL-DURATION
+
+  - id: R-BUD-01
+    title: "Toplam bütçe üst sınırı"
+    display_unit: try
+    check_type: computed
+    formula: "sum(budget_rows)"
+    operator: "<="
+    limit: 1500000
+    severity: HIGH
+    source: {doc_id: MGA-2026-CALL, version: 2, section: "4.1"}
+    template: TPL-BUDGET-CAP
+
+  - id: R-BUD-02
+    title: "Dolaylı gider oranı"
+    display_unit: percent
+    check_type: computed
+    formula: "indirect / sum(rows where category != indirect) * 100"
+    operator: "<="
+    limit: 10
+    unit: percent
+    severity: HIGH
+    source: {doc_id: MGA-2026-CALL, version: 2, section: "4.3"}
+    template: TPL-INDIRECT
+
+  - id: R-BUD-03
+    title: "Ekipman payı"
+    display_unit: percent
+    check_type: computed
+    formula: "equipment / sum(budget_rows) * 100"
+    operator: "<="
+    limit: 30
+    unit: percent
+    severity: HIGH
+    exception:
+      registry: preapproval_registry
+      max_with_exception: 40
+      source: {doc_id: MGA-2026-ANN, announcement: MGA-2026-ANN-2}
+    source: {doc_id: MGA-2026-CALL, version: 2, section: "4.4"}
+    template: TPL-EQUIPMENT
+
+  - id: R-BUD-04
+    title: "Bütçe toplamının tutarlılığı"
+    display_unit: try
+    check_type: computed
+    formula: "sum(budget_rows) == declared_total"
+    severity: HIGH
+    source: {doc_id: MGA-2026-CALL, version: 2, section: "4.5"}
+    template: TPL-BUDGET-SUM
+
+  - id: R-DOC-01
+    title: "Sayfa sınırı"
+    display_unit: pages
+    check_type: numeric
+    checks:
+      - {field: page_count, operator: "<=", limit: 15}
+    severity: MEDIUM
+    source: {doc_id: MGA-2026-CALL, version: 2, section: "5.1"}
+    template: TPL-PAGES
+
+  - id: R-DOC-02
+    title: "Zorunlu bölümler"
+    display_unit: sections
+    check_type: presence
+    required_sections:
+      - Özet
+      - Amaç ve Hedefler
+      - Yöntem
+      - İş Paketleri ve Takvim
+      - Risk Yönetimi
+      - Veri Yönetim Planı
+      - Etik Değerlendirme
+      - Bütçe ve Gerekçe
+    # Policy: headings with the same meaning count as the required section. Matching ignores
+    # number prefixes ("3.") and case (Turkish İ/ı); anything else must be listed here.
+    section_aliases:
+      Özet: [Proje Özeti]
+      Amaç ve Hedefler: [Amaç ve Hedef, Projenin Amacı ve Hedefleri]
+      Yöntem: [Yöntem ve Araştırma Tasarımı, Araştırma Yöntemi]
+      İş Paketleri ve Takvim: [İş Paketleri ve Zaman Çizelgesi, İş Paketleri ve Zaman Planı, Çalışma Takvimi]
+      Risk Yönetimi: [Risk Yönetimi Planı, Riskler ve Önlemler]
+      Veri Yönetim Planı: [Veri Yönetimi Planı, Veri Yönetimi]
+      Etik Değerlendirme: [Etik Hususlar, Etik Konular]
+      Bütçe ve Gerekçe: [Bütçe ve Gerekçesi, Bütçe Gerekçesi, Bütçe]
+    severity: MEDIUM
+    source: {doc_id: MGA-2026-CALL, version: 2, section: "5.2"}
+    template: TPL-SECTIONS
+
+  # INTENTIONAL GAPS (feedback-loop exercise, stage H):
+  #   - Call 4.6 (service procurement > 100k TL needs provider + quote)
+  #   - Call 6.2 (human-derived data needs ethics approval / exemption)
+  # These are NOT encoded here. They must be caught by the Open Risk Scan (E1)
+  # and the Investigator Agent (E2). Program officer feedback should add
+  # R-BUD-05 and R-ETH-01 in rulebook v3.
+
+decision:
+  order:
+    - "integrity_flag (hidden text or prompt injection, call 7.1) -> INTEGRITY_REVIEW"
+    - "gate rule failed -> INELIGIBLE (early exit, deficiency letter draft only)"
+    - "any stage failed or agent budget exhausted -> OFFICER_REVIEW"
+    - "any HIGH violation without valid exception -> OFFICER_REVIEW"
+    - "any MEDIUM violation or confirmed open risk -> OFFICER_REVIEW"
+    - "otherwise -> AUTO_PASS (to scientific panel; officer spot-check)"

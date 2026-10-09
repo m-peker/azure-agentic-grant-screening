@@ -1,0 +1,22 @@
+[
+  {
+    "preapproval_id": "ON-2025-031",
+    "call_id": "MGA-2025",
+    "application_ref": "MGA-2025-0090",
+    "applicant_orcid": "0000-0000-0000-0147",
+    "rule_id": "R-BUD-03",
+    "max_equipment_percent": 40,
+    "granted": "2025-07-10",
+    "note": "Önceki çağrı için verildi. MGA-2026 için geçersiz (Duyuru-2)."
+  },
+  {
+    "preapproval_id": "ON-2026-012",
+    "call_id": "MGA-2026",
+    "application_ref": "MGA-2026-0213",
+    "applicant_orcid": "0000-0000-0000-0213",
+    "rule_id": "R-BUD-03",
+    "max_equipment_percent": 40,
+    "granted": "2026-08-12",
+    "note": "Kuraklık simülasyon kabini için saha altyapısı gerekçesi kabul edildi."
+  }
+]

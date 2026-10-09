@@ -1,0 +1,31 @@
+{
+ "phd_date": {
+  "paragraph_id": "P15",
+  "quote": "Doktora derecesi alış tarihi: 30.05.2022"
+ },
+ "duration": {
+  "paragraph_id": "P15",
+  "quote": "Proje süresi: 30 ay"
+ },
+ "declared_total": {
+  "paragraph_id": "P14",
+  "quote": "Beyan edilen toplam bütçe: 1.380.000 TL"
+ },
+ "leaves": [],
+ "leave_documents": null,
+ "exception_claims": [
+  {
+   "kind": "other",
+   "cited_id": null,
+   "summary": "Veriler retrospektif ve anonim olduğu için etik kurul onayının gerekli olmadığı iddia ediliyor.",
+   "evidence": {
+    "paragraph_id": "P13",
+    "quote": "Veriler retrospektif ve anonim olduğundan etik kurul onayı gerekmemektedir."
+   }
+  }
+ ],
+ "attachments": {
+  "paragraph_id": "P15",
+  "quote": "Ekler: Özgeçmiş, Ek-C anonimleştirme hizmeti teklifi"
+ }
+}

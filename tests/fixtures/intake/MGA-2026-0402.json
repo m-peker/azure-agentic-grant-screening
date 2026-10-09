@@ -1,0 +1,165 @@
+{
+  "application_id": "MGA-2026-0402",
+  "source_sha256": "73e4c8552c3c42c957c9090b09c48dfb59eba87458267e3eb4e2c048c306d736",
+  "page_count": 1,
+  "sections": [
+    {
+      "title": "_preamble",
+      "paragraphs": [
+        {
+          "text": "GENÇ ARAŞTIRMACI HİBE PROGRAMI 2026 - PROJE BAŞVURUSU",
+          "page": 1,
+          "offset": 0
+        },
+        {
+          "text": "Başvuru No: MGA-2026-0402",
+          "page": 1,
+          "offset": 54
+        },
+        {
+          "text": "Proje Başlığı: Orta Ölçekli Kentlerde Isı Adası Etkisinin Sokak Ağacı Örtüsüyle İlişkisi",
+          "page": 1,
+          "offset": 80
+        }
+      ]
+    },
+    {
+      "title": "Yürütücü Bilgileri",
+      "paragraphs": [
+        {
+          "text": "Ad Soyad: Dr. [KISI_1]",
+          "page": 1,
+          "offset": 188
+        },
+        {
+          "text": "T.C. Kimlik No: [KIMLIK_1] ORCID: [ORCID_1]",
+          "page": 1,
+          "offset": 212
+        },
+        {
+          "text": "Kurum: [KURUM_1]",
+          "page": 1,
+          "offset": 267
+        },
+        {
+          "text": "E-posta: [EPOSTA_1]",
+          "page": 1,
+          "offset": 323
+        }
+      ]
+    },
+    {
+      "title": "Özet",
+      "paragraphs": [
+        {
+          "text": "Proje, beş orta ölçekli kentte yüzey sıcaklığı ile sokak ağacı örtüsü arasındaki ilişkiyi uydu verisi ve mobil sensör ölçümleriyle inceleyecektir.",
+          "page": 1,
+          "offset": 361
+        }
+      ]
+    },
+    {
+      "title": "Yöntem",
+      "paragraphs": [
+        {
+          "text": "Yaz aylarında mobil sensörlerle sıcaklık transektleri ölçülecek, termal uydu görüntüleri ve ağaç örtüsü haritalarıyla karşılaştırılacaktır.",
+          "page": 1,
+          "offset": 515
+        }
+      ]
+    },
+    {
+      "title": "Bütçe ve Gerekçe",
+      "paragraphs": [
+        {
+          "text": "Beyan edilen toplam bütçe: 930.000 TL",
+          "page": 1,
+          "offset": 872
+        }
+      ]
+    },
+    {
+      "title": "Beyan Formu",
+      "paragraphs": [
+        {
+          "text": "Doktora derecesi alış tarihi: 15.01.2015",
+          "page": 1,
+          "offset": 922
+        },
+        {
+          "text": "Doğum / ebeveyn izni: Yok",
+          "page": 1,
+          "offset": 963
+        },
+        {
+          "text": "Uzun süreli sağlık izni: Yok",
+          "page": 1,
+          "offset": 989
+        },
+        {
+          "text": "Proje süresi: 20 ay",
+          "page": 1,
+          "offset": 1018
+        },
+        {
+          "text": "Ekler: Özgeçmiş",
+          "page": 1,
+          "offset": 1038
+        }
+      ]
+    }
+  ],
+  "budget": {
+    "rows": [
+      {
+        "label": "Personel",
+        "category": "personel",
+        "amount": 500000,
+        "justification": "2 araştırma asistanı",
+        "page": 1
+      },
+      {
+        "label": "Ekipman",
+        "category": "ekipman",
+        "amount": 200000,
+        "justification": "Mobil sensör kitleri",
+        "page": 1
+      },
+      {
+        "label": "Seyahat",
+        "category": "seyahat",
+        "amount": 150000,
+        "justification": "Beş kentte saha çalışması",
+        "page": 1
+      },
+      {
+        "label": "Dolaylı gider",
+        "category": "dolayli",
+        "amount": 80000,
+        "justification": "Kurum genel giderleri",
+        "page": 1
+      }
+    ],
+    "total_row_amount": 930000,
+    "fragments": 1,
+    "rows_sum": 930000,
+    "by_category": {
+      "personel": 500000,
+      "ekipman": 200000,
+      "seyahat": 150000,
+      "dolayli": 80000
+    }
+  },
+  "integrity": {
+    "flag": false,
+    "findings": [],
+    "paragraphs_checked": 9
+  },
+  "pii_counts": {
+    "KURUM": 1,
+    "ORCID": 1,
+    "KIMLIK": 1,
+    "EPOSTA": 1,
+    "KISI": 1
+  }
+}

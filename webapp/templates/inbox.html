@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Gelen başvurular{% endblock %}
+{% block content %}
+{% if uploaded %}<div class="toast ok" role="status">Belge yüklendi. Başvuru numarası: <b>{{ uploaded }}</b>.{% if not local_mode %} Sistem kısa süre içinde incelemeye alacak.{% endif %}</div>{% endif %}
+{% if error %}<div class="toast bad" role="alert">{{ error }}</div>{% endif %}
+
+<div class="page-head">
+  <div>
+    <h1>Gelen başvurular</h1>
+    <p>Başvuru belgesini yükleyin{% if local_mode %} ve ön uygunluk incelemesine alın{% endif %}.</p>
+  </div>
+</div>
+
+<form class="card upload" method="post" action="/inbox/upload" enctype="multipart/form-data" id="upload-form">
+  <label class="dropzone" for="file" id="dropzone">
+    <span class="dz-icon" aria-hidden="true">⇪</span>
+    <span class="dz-title">PDF'i buraya sürükleyin veya <u>dosya seçin</u></span>
+    <span class="dz-hint">Yalnızca PDF · en fazla 10 MB · en fazla {{ max_pages }} sayfa</span>
+    <span class="dz-file" id="dz-file"></span>
+    <input type="file" id="file" name="file" accept="application/pdf,.pdf" required>
+  </label>
+  <button class="btn" type="submit" id="upload-btn">Yükle</button>
+</form>
+
+<h2 class="section-title">Yüklenen başvurular</h2>
+{% if uploads %}
+<section class="proposals">
+  {% for p in uploads %}{% include "_proposal_card.html" %}{% endfor %}
+</section>
+{% else %}
+<div class="card empty">Henüz yüklenmiş başvuru yok.</div>
+{% endif %}
+
+{% if samples %}
+<h2 class="section-title">Örnek başvurular</h2>
+<section class="proposals">
+  {% for p in samples %}{% include "_proposal_card.html" %}{% endfor %}
+</section>
+{% endif %}
+
+<div class="overlay" id="live" hidden>
+  <div class="card progress" role="dialog" aria-modal="true" aria-labelledby="live-title">
+    <h2 id="live-title">İnceleniyor</h2>
+    <ol class="steps" id="steps">
+      {% for code, label in steps %}<li data-stage="{{ code }}"><span class="dot" aria-hidden="true"></span><span class="label">{{ label }}</span><span class="state"></span></li>{% endfor %}
+    </ol>
+    <p class="note" id="live-message"></p>
+    <div class="actions" id="live-actions" hidden>
+      <a class="btn" id="open-result" href="#">Sonucu aç</a>
+      <button class="btn ghost" type="button" id="close-live">Kapat</button>
+    </div>
+  </div>
+</div>
+{% endblock %}

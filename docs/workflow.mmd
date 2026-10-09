@@ -1,0 +1,22 @@
+flowchart TD
+  A_intake["A_intake (Start)"];
+  B_structure["B_structure"];
+  C_rules["C_rules"];
+  F3_decide["F3_decide"];
+  D2_claims["D2_claims"];
+  E_open_risk["E_open_risk"];
+  F_verify["F_verify"];
+  G1_letter["G1_letter"];
+  G2_officer["G2_officer"];
+  fan_in__F_verify__fc093c81((fan-in))
+  D2_claims --> fan_in__F_verify__fc093c81;
+  E_open_risk --> fan_in__F_verify__fc093c81;
+  fan_in__F_verify__fc093c81 --> F_verify;
+  A_intake --> B_structure;
+  B_structure --> C_rules;
+  C_rules -. conditional .-> F3_decide;
+  C_rules -. conditional .-> D2_claims;
+  C_rules -. conditional .-> E_open_risk;
+  F_verify --> F3_decide;
+  F3_decide --> G1_letter;
+  G1_letter --> G2_officer;

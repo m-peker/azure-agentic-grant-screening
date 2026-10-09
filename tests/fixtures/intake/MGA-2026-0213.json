@@ -1,0 +1,252 @@
+{
+  "application_id": "MGA-2026-0213",
+  "source_sha256": "8527ba81729159450b3f829b2f13e1e4c739f7cff9d8c70478dd4c3fa632e97f",
+  "page_count": 2,
+  "sections": [
+    {
+      "title": "_preamble",
+      "paragraphs": [
+        {
+          "text": "GENÇ ARAŞTIRMACI HİBE PROGRAMI 2026 - PROJE BAŞVURUSU",
+          "page": 1,
+          "offset": 0
+        },
+        {
+          "text": "Başvuru No: MGA-2026-0213",
+          "page": 1,
+          "offset": 54
+        },
+        {
+          "text": "Proje Başlığı: Anadolu Yerel Buğday Çeşitlerinde Kuraklık Toleransıyla İlişkili Gen Bölgelerinin Belirlenmesi",
+          "page": 1,
+          "offset": 80
+        }
+      ]
+    },
+    {
+      "title": "Yürütücü Bilgileri",
+      "paragraphs": [
+        {
+          "text": "Ad Soyad: Dr. [KISI_1]",
+          "page": 1,
+          "offset": 209
+        },
+        {
+          "text": "T.C. Kimlik No: [KIMLIK_1]",
+          "page": 1,
+          "offset": 235
+        },
+        {
+          "text": "ORCID: [ORCID_1]",
+          "page": 1,
+          "offset": 263
+        },
+        {
+          "text": "Kurum: [KURUM_1]",
+          "page": 1,
+          "offset": 290
+        },
+        {
+          "text": "E-posta: [EPOSTA_1]",
+          "page": 1,
+          "offset": 347
+        },
+        {
+          "text": "Telefon: [TELEFON_1]",
+          "page": 1,
+          "offset": 382
+        }
+      ]
+    },
+    {
+      "title": "Özet",
+      "paragraphs": [
+        {
+          "text": "Proje, 60 yerel buğday çeşidini kontrollü kuraklık koşullarında fenotipleyerek kuraklık toleransıyla ilişkili gen bölgelerini genom çapında ilişkilendirme analiziyle belirleyecektir.",
+          "page": 1,
+          "offset": 414
+        }
+      ]
+    },
+    {
+      "title": "Amaç ve Hedefler",
+      "paragraphs": [
+        {
+          "text": "H1: 60 yerel çeşidin kontrollü kuraklık kabininde fenotiplenmesi. H2: Genotipleme verisiyle ilişkilendirme analizi. H3: Islah programları için aday marker listesinin yayımlanması.",
+          "page": 1,
+          "offset": 614
+        }
+      ]
+    },
+    {
+      "title": "Yöntem",
+      "paragraphs": [
+        {
+          "text": "Çeşitler iki sezon boyunca kontrollü kuraklık simülasyon kabininde üç tekrarlı yetiştirilecektir. Yaprak su potansiyeli, stoma iletkenliği ve tane verimi ölçülecektir. Genotipleme hizmeti dış laboratuvardan alınacak, ilişkilendirme analizi karma doğrusal modellerle yapılacaktır.",
+          "page": 1,
+          "offset": 801
+        }
+      ]
+    },
+    {
+      "title": "İş Paketleri ve Takvim",
+      "paragraphs": [
+        {
+          "text": "İP1 Kabin kurulumu ve pilot deneme (Ay 1-4). İP2 Birinci sezon fenotipleme (Ay 5-10). İP3 İkinci sezon fenotipleme (Ay 13-18). İP4 Genotipleme ve analiz (Ay 8-24).",
+          "page": 1,
+          "offset": 1104
+        }
+      ]
+    },
+    {
+      "title": "Risk Yönetimi",
+      "paragraphs": [
+        {
+          "text": "Kabin arızasına karşı üretici bakım sözleşmesi bulunmaktadır. Tohum çimlenme sorunu için yedek tohum stoku gen bankasından temin edilmiştir.",
+          "page": 1,
+          "offset": 1282
+        }
+      ]
+    },
+    {
+      "title": "Veri Yönetim Planı",
+      "paragraphs": [
+        {
+          "text": "Fenotip ve genotip verileri proje sonunda açık erişimli bir tarımsal veri deposunda yayımlanacaktır.",
+          "page": 1,
+          "offset": 1442
+        }
+      ]
+    },
+    {
+      "title": "Etik Değerlendirme",
+      "paragraphs": [
+        {
+          "text": "Proje yalnızca bitki materyali kullanmaktadır; insan katılımcı, insan kaynaklı veri veya hayvan deneyi içermemektedir.",
+          "page": 1,
+          "offset": 1562
+        }
+      ]
+    },
+    {
+      "title": "Bütçe ve Gerekçe",
+      "paragraphs": [
+        {
+          "text": "Beyan edilen toplam bütçe: 1.200.000 TL",
+          "page": 2,
+          "offset": 2109
+        },
+        {
+          "text": "Bütçe açıklamaları:",
+          "page": 2,
+          "offset": 2149
+        },
+        {
+          "text": "Ekipman payı Duyuru-2 kapsamında alınan ön onaya dayanmaktadır (Ön Onay No: ON-2026-012).",
+          "page": 2,
+          "offset": 2169
+        }
+      ]
+    },
+    {
+      "title": "Beyan Formu",
+      "paragraphs": [
+        {
+          "text": "Doktora derecesi alış tarihi: 20.06.2017",
+          "page": 2,
+          "offset": 2271
+        },
+        {
+          "text": "Doğum / ebeveyn izni: 2 adet (03.2019-09.2019; 01.2022-07.2022), belgeler ektedir",
+          "page": 2,
+          "offset": 2312
+        },
+        {
+          "text": "Uzun süreli sağlık izni: Yok",
+          "page": 2,
+          "offset": 2394
+        },
+        {
+          "text": "Proje süresi: 24 ay",
+          "page": 2,
+          "offset": 2423
+        },
+        {
+          "text": "Ekler: Özgeçmiş, izin belgeleri, Ek-B genotipleme fiyat teklifi",
+          "page": 2,
+          "offset": 2443
+        }
+      ]
+    }
+  ],
+  "budget": {
+    "rows": [
+      {
+        "label": "Personel",
+        "category": "personel",
+        "amount": 450000,
+        "justification": "1 doktora sonrası araştırmacı, 1 doktora öğrencisi bursu",
+        "page": 1
+      },
+      {
+        "label": "Ekipman",
+        "category": "ekipman",
+        "amount": 430000,
+        "justification": "Kontrollü kuraklık simülasyon kabini",
+        "page": 2
+      },
+      {
+        "label": "Sarf malzeme",
+        "category": "sarf",
+        "amount": 150000,
+        "justification": "Tohum, saksı, besin çözeltisi, DNA izolasyon kitleri",
+        "page": 2
+      },
+      {
+        "label": "Seyahat",
+        "category": "seyahat",
+        "amount": 40000,
+        "justification": "Gen bankası ziyareti, kongre",
+        "page": 2
+      },
+      {
+        "label": "Hizmet alımı",
+        "category": "hizmet",
+        "amount": 30000,
+        "justification": "Genotipleme (Ege Tohum Analiz Laboratuvarı, teklif Ek-B'de)",
+        "page": 2
+      },
+      {
+        "label": "Dolaylı gider",
+        "category": "dolayli",
+        "amount": 100000,
+        "justification": "Kurum genel giderleri",
+        "page": 2
+      }
+    ],
+    "total_row_amount": 1200000,
+    "fragments": 2,
+    "rows_sum": 1200000,
+    "by_category": {
+      "personel": 450000,
+      "ekipman": 430000,
+      "sarf": 150000,
+      "seyahat": 40000,
+      "hizmet": 30000,
+      "dolayli": 100000
+    }
+  },
+  "integrity": {
+    "flag": false,
+    "findings": [],
+    "paragraphs_checked": 16
+  },
+  "pii_counts": {
+    "KURUM": 1,
+    "ORCID": 1,
+    "KIMLIK": 1,
+    "EPOSTA": 1,
+    "TELEFON": 1,
+    "KISI": 1
+  }
+}

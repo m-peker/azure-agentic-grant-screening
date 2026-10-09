@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Başvurular{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div>
+    <h1>Başvurular</h1>
+    <p>Ön uygunluk taramasından geçen başvurular ve kararınızı bekleyenler.</p>
+  </div>
+  {% if local_mode %}<a class="btn" href="/inbox">Gelen başvurular</a>{% endif %}
+</div>
+
+<section class="kpis">
+  <a class="card kpi" href="/?f=pending"><div class="label">Kararınızı bekleyen</div><div class="value">{{ counts.pending }}</div></a>
+  <a class="card kpi" href="/?f=done"><div class="label">Tamamlanan</div><div class="value">{{ counts.done }}</div></a>
+  <div class="card kpi"><div class="label">Bütünlük sorunu</div><div class="value {{ 'alert' if counts.integrity else '' }}">{{ counts.integrity }}</div></div>
+</section>
+
+<nav class="filters" aria-label="Filtre">
+  {% for key, label, n in filters %}<a href="/?f={{ key }}" class="{{ 'active' if f == key else '' }}">{{ label }} <span>{{ n }}</span></a>{% endfor %}
+</nav>
+
+<div class="card table-card scroll">
+  {% if items %}
+  <table>
+    <thead><tr><th>Başvuru</th><th>Ön değerlendirme</th><th>Durum</th><th class="hide-sm">Son işlem</th><th></th></tr></thead>
+    <tbody>
+    {% for r in items %}
+      <tr class="rowlink" data-href="/a/{{ r.application_id }}">
+        <td><a class="app-title" href="/a/{{ r.application_id }}">{{ r.title or r.application_id }}</a><div class="app-id">{{ r.application_id }}</div></td>
+        <td><span class="pill {{ decision_kind(r.decision.decision) }}">{{ decision_label(r.decision.decision) }}</span></td>
+        <td><span class="pill {{ status_kind(r.status) }}">{{ status_label(r.status) }}</span></td>
+        <td class="hide-sm muted">{{ when(r.updated_at) }}</td>
+        <td class="chev" aria-hidden="true">›</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="empty">
+    {% if f == 'pending' %}Kararınızı bekleyen başvuru yok.{% else %}Bu listede başvuru yok.{% endif %}
+    {% if local_mode %}<div style="margin-top:10px"><a href="/inbox">Gelen başvurulara git</a></div>{% endif %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

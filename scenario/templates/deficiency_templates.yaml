@@ -1,0 +1,28 @@
+# Approved wording for deficiency letters (stage G).
+# The LLM may only fill {placeholders}; it may not invent new requirements.
+library_version: 1
+templates:
+  - id: TPL-INELIGIBLE
+    text: "Başvurunuz Çağrı Metni madde 2.1-2.2 kapsamındaki yürütücü uygunluk koşulunu sağlamamaktadır. Doktora tarihi: {phd_date}; izinlerle uzatılmış üst sınır: {limit_date}."
+  - id: TPL-DURATION
+    text: "Önerilen proje süresi ({value} ay), Çağrı Metni madde 3.1'de belirtilen 12-24 ay aralığının dışındadır."
+  - id: TPL-BUDGET-CAP
+    text: "Toplam bütçe ({value} TL), Çağrı Metni madde 4.1'deki 1.500.000 TL üst sınırını aşmaktadır."
+  - id: TPL-INDIRECT
+    text: "Dolaylı gider oranı (%{value}), Çağrı Metni madde 4.3 (Duyuru-1 ile güncellenmiş) uyarınca doğrudan giderlerin %10'unu aşamaz. Dolaylı gider en fazla {max_amount} TL olabilir."
+  - id: TPL-EQUIPMENT
+    text: "Ekipman payı (%{value}), Çağrı Metni madde 4.4'teki %30 sınırını aşmaktadır. Duyuru-2 kapsamında bu çağrıya ait geçerli bir ön onay kaydı bulunamamıştır."
+  - id: TPL-BUDGET-SUM
+    text: "Bütçe tablosundaki kalemlerin toplamı ({rows_sum} TL), beyan edilen toplam bütçe ({declared} TL) ile uyuşmamaktadır (Çağrı Metni madde 4.5)."
+  - id: TPL-PAGES
+    text: "Proje metni {value} sayfadır; Çağrı Metni madde 5.1 uyarınca en fazla 15 sayfa olabilir."
+  - id: TPL-SECTIONS
+    text: "Proje metninde şu zorunlu bölümler bulunamamıştır: {missing}. (Çağrı Metni madde 5.2)"
+  # Templates below explain findings of the agents (no code rule yet).
+  # call_section links an agent finding to its template.
+  - id: TPL-SERVICE-QUOTE
+    call_section: "4.6"
+    text: "{amount} TL tutarındaki hizmet alımı için hizmet sağlayıcı ve fiyat teklifi eklenmelidir (Çağrı Metni madde 4.6)."
+  - id: TPL-ETHICS
+    call_section: "6.2"
+    text: "Projede insan kaynaklı veri kullanılmaktadır. Çağrı Metni madde 6.2 ve Duyuru-3 uyarınca etik kurul onayı veya muafiyet kararı eklenmelidir."

@@ -1,0 +1,9 @@
+fastapi==0.141.1
+uvicorn==0.54.0
+gunicorn==23.0.0
+python-multipart==0.0.32
+azure-identity==1.26.0
+azure-cosmos==4.17.1
+jinja2==3.1.6
+azure-storage-blob==12.31.0
+pypdf==6.19.0
